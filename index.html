@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Grecia 🌻</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 50% 20%, #fff8c7 0%, transparent 35%),
+                linear-gradient(135deg, #fff4b8, #ffd96a, #f7c84a);
+
+            position: relative;
+        }
+
+        /* ==============================
+           MARCO PRINCIPAL
+        ============================== */
+
+        .marco {
+            width: min(92vw, 500px);
+            height: min(92vh, 720px);
+            max-height: 720px;
+
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 35px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.88),
+                    rgba(255,248,204,.92)
+                );
+
+            border: 3px solid rgba(255,255,255,.8);
+
+            box-shadow:
+                0 25px 60px rgba(126, 91, 0, .28),
+                inset 0 0 40px rgba(255,255,255,.7);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 30px 20px;
+
+            isolation: isolate;
+        }
+
+        /* Decoración interior */
+
+        .brillo {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle,
+                rgba(255,255,255,.8),
+                transparent 70%
+            );
+
+            top: -100px;
+            left: -100px;
+
+            z-index: -1;
+        }
+
+        .brillo2 {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle,
+                rgba(255,214,64,.25),
+                transparent 70%
+            );
+
+            bottom: -120px;
+            right: -120px;
+
+            z-index: -1;
+        }
+
+        /* ==============================
+           TEXTO
+        ============================== */
+
+        .encabezado {
+            text-align: center;
+            z-index: 5;
+            animation: aparecer 1.2s ease forwards;
+        }
+
+        .encabezado .mini {
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #a87500;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .encabezado h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 9vw, 52px);
+            color: #765000;
+
+            text-shadow:
+                0 2px 0 #fff,
+                0 5px 15px rgba(120,80,0,.2);
+        }
+
+        .encabezado p {
+            margin-top: 8px;
+            font-size: 15px;
+            color: #856a32;
+        }
+
+        /* ==============================
+           RAMO
+        ============================== */
+
+        .ramo {
+            position: relative;
+
+            width: 270px;
+            height: 285px;
+
+            margin-top: 5px;
+
+            animation:
+                aparecer 1.4s ease forwards,
+                balanceo 5s ease-in-out infinite;
+
+            transform-origin: bottom center;
+
+            flex-shrink: 0;
+        }
+
+        /* Tallos */
+
+        .tallo {
+            position: absolute;
+            width: 7px;
+            height: 190px;
+
+            background: linear-gradient(
+                90deg,
+                #426e2b,
+                #6e9f39,
+                #315e23
+            );
+
+            border-radius: 10px;
+
+            left: 50%;
+            bottom: 20px;
+
+            transform-origin: bottom center;
+        }
+
+        .t1 { transform: rotate(-23deg); }
+        .t2 { transform: rotate(-12deg); }
+        .t3 { transform: rotate(0deg); }
+        .t4 { transform: rotate(12deg); }
+        .t5 { transform: rotate(23deg); }
+
+        /* Hojas */
+
+        .hoja {
+            position: absolute;
+
+            width: 48px;
+            height: 20px;
+
+            background: linear-gradient(
+                135deg,
+                #81b94c,
+                #386b28
+            );
+
+            border-radius: 100% 0 100% 0;
+
+            bottom: 105px;
+            left: 50%;
+
+            transform-origin: left center;
+        }
+
+        .h1 {
+            transform: translateX(-10px) rotate(-35deg);
+        }
+
+        .h2 {
+            transform: translateX(-5px) rotate(28deg);
+        }
+
+        .h3 {
+            transform: translateX(-5px) translateY(35px) rotate(-45deg);
+        }
+
+        .h4 {
+            transform: translateX(-5px) translateY(40px) rotate(35deg);
+        }
+
+        /* ==============================
+           FLORES
+        ============================== */
+
+        .flor {
+            position: absolute;
+
+            width: 88px;
+            height: 88px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            filter:
+                drop-shadow(0 8px 8px rgba(100,70,0,.22));
+
+            animation:
+                florFlota 4s ease-in-out infinite;
+        }
+
+        .flor1 {
+            left: 5px;
+            top: 40px;
+            transform: scale(.88);
+        }
+
+        .flor2 {
+            left: 88px;
+            top: 8px;
+            transform: scale(1.05);
+        }
+
+        .flor3 {
+            right: 5px;
+            top: 40px;
+            transform: scale(.9);
+        }
+
+        .flor4 {
+            left: 50px;
+            top: 82px;
+            transform: scale(.92);
+        }
+
+        .flor5 {
+            right: 52px;
+            top: 85px;
+            transform: scale(.87);
+        }
+
+        .petalo {
+            position: absolute;
+
+            width: 43px;
+            height: 64px;
+
+            background: linear-gradient(
+                145deg,
+                #fff36b,
+                #ffd21f 55%,
+                #e9a900
+            );
+
+            border-radius:
+                50% 50% 45% 45%;
+
+            box-shadow:
+                inset -5px -6px 8px rgba(180,110,0,.18),
+                inset 4px 4px 7px rgba(255,255,255,.55);
+
+            transform-origin: center bottom;
+        }
+
+        .p1 { transform: rotate(0deg) translateY(-25px); }
+        .p2 { transform: rotate(72deg) translateY(-25px); }
+        .p3 { transform: rotate(144deg) translateY(-25px); }
+        .p4 { transform: rotate(216deg) translateY(-25px); }
+        .p5 { transform: rotate(288deg) translateY(-25px); }
+
+        .centro {
+            position: absolute;
+
+            width: 32px;
+            height: 32px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #fff09a,
+                    #d88700 65%,
+                    #9c5d00
+                );
+
+            box-shadow:
+                0 3px 8px rgba(100,60,0,.35);
+
+            z-index: 4;
+        }
+
+        /* ==============================
+           PAPEL DEL RAMO
+        ============================== */
+
+        .envoltura {
+            position: absolute;
+
+            bottom: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 190px;
+            height: 110px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #fffdf1,
+                    #f4e8c4,
+                    #fffaf0
+                );
+
+            clip-path: polygon(
+                5% 0,
+                95% 0,
+                70% 100%,
+                30% 100%
+            );
+
+            box-shadow:
+                0 12px 18px rgba(100,70,0,.2);
+
+            z-index: 8;
+        }
+
+        .cinta {
+            position: absolute;
+
+            bottom: 48px;
+            left: 50%;
+
+            width: 48px;
+            height: 18px;
+
+            transform: translateX(-50%);
+
+            background: #e9a92e;
+
+            border-radius: 8px;
+
+            z-index: 10;
+
+            box-shadow:
+                0 4px 5px rgba(100,60,0,.2);
+        }
+
+        .cinta::before,
+        .cinta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 35px;
+            height: 22px;
+
+            background: #e9a92e;
+
+            top: 8px;
+        }
+
+        .cinta::before {
+            right: 28px;
+            transform: rotate(30deg);
+        }
+
+        .cinta::after {
+            left: 28px;
+            transform: rotate(-30deg);
+        }
+
+        /* ==============================
+           OSITO
+        ============================== */
+
+        .oso {
+            position: absolute;
+
+            bottom: 32px;
+            right: 25px;
+
+            width: 115px;
+            height: 135px;
+
+            z-index: 15;
+
+            animation:
+                osoFlota 3.5s ease-in-out infinite;
+        }
+
+        .oreja {
+            position: absolute;
+
+            width: 40px;
+            height: 40px;
+
+            background: #b87945;
+
+            border-radius: 50%;
+
+            top: 0;
+
+            box-shadow:
+                inset 0 4px 5px rgba(255,255,255,.2);
+        }
+
+        .oreja::after {
+            content: "";
+
+            position: absolute;
+
+            width: 20px;
+            height: 20px;
+
+            background: #e6a06c;
+
+            border-radius: 50%;
+
+            top: 10px;
+            left: 10px;
+        }
+
+        .oreja1 { left: 3px; }
+        .oreja2 { right: 3px; }
+
+        .cabeza {
+            position: absolute;
+
+            width: 95px;
+            height: 85px;
+
+            left: 10px;
+            top: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #d99960,
+                    #a96337
+                );
+
+            border-radius: 48%;
+
+            box-shadow:
+                inset -8px -8px 12px rgba(80,40,10,.18),
+                0 7px 10px rgba(90,50,0,.2);
+        }
+
+        .hocico {
+            position: absolute;
+
+            width: 48px;
+            height: 35px;
+
+            background: #f0bc84;
+
+            border-radius: 50%;
+
+            bottom: 8px;
+            left: 24px;
+        }
+
+        .ojo {
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            background: #302016;
+
+            border-radius: 50%;
+
+            top: 37px;
+        }
+
+        .ojo1 { left: 28px; }
+        .ojo2 { right: 28px; }
+
+        .nariz {
+            position: absolute;
+
+            width: 13px;
+            height: 9px;
+
+            background: #3b2114;
+
+            border-radius: 50%;
+
+            left: 42px;
+            top: 57px;
+        }
+
+        .cuerpo {
+            position: absolute;
+
+            width: 88px;
+            height: 65px;
+
+            left: 14px;
+            bottom: 0;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #d18b54,
+                    #9c5b35
+                );
+
+            border-radius: 45% 45% 35% 35%;
+
+            box-shadow:
+                0 7px 10px rgba(90,50,0,.2);
+        }
+
+        .corazon {
+            position: absolute;
+
+            color: #e84e4e;
+
+            font-size: 25px;
+
+            left: 32px;
+            top: 15px;
+
+            animation: latido 1.5s infinite;
+        }
+
+        /* ==============================
+           FRASE
+        ============================== */
+
+        .mensaje {
+            position: relative;
+
+            width: 90%;
+
+            margin-top: -2px;
+
+            padding: 18px 15px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,.63);
+
+            border: 1px solid rgba(255,255,255,.8);
+
+            box-shadow:
+                0 10px 25px rgba(120,80,0,.1);
+
+            z-index: 20;
+
+            animation: aparecer 1.8s ease forwards;
+        }
+
+        .mensaje p {
+            font-family: Georgia, serif;
+
+            font-size: clamp(17px, 4vw, 21px);
+
+            line-height: 1.45;
+
+            color: #74531c;
+        }
+
+        .mensaje strong {
+            color: #d49a00;
+        }
+
+        .firma {
+            margin-top: 8px;
+
+            font-size: 13px;
+
+            color: #a17a35;
+        }
+
+        /* ==============================
+           DETALLES
+        ============================== */
+
+        .detalle {
+            position: absolute;
+
+            font-size: 22px;
+
+            opacity: .7;
+
+            animation: flotar 4s ease-in-out infinite;
+
+            z-index: 2;
+        }
+
+        .d1 {
+            top: 110px;
+            left: 22px;
+        }
+
+        .d2 {
+            top: 220px;
+            right: 18px;
+            animation-delay: 1s;
+        }
+
+        .d3 {
+            bottom: 190px;
+            left: 18px;
+            animation-delay: 2s;
+        }
+
+        .d4 {
+            bottom: 90px;
+            right: 160px;
+            animation-delay: .5s;
+        }
+
+        /* ==============================
+           ESTRELLAS AL TOCAR
+        ============================== */
+
+        .chispa {
+            position: fixed;
+
+            pointer-events: none;
+
+            font-size: 13px;
+
+            color: #ffd83d;
+
+            z-index: 9999;
+
+            animation: explosion .8s ease-out forwards;
+        }
+
+        /* ==============================
+           ANIMACIONES
+        ============================== */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes balanceo {
+            0%, 100% {
+                transform: rotate(-1deg);
+            }
+
+            50% {
+                transform: rotate(1.5deg);
+            }
+        }
+
+        @keyframes florFlota {
+            0%, 100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -4px;
+            }
+        }
+
+        @keyframes osoFlota {
+            0%, 100% {
+                transform: translateY(0) rotate(-1deg);
+            }
+
+            50% {
+                transform: translateY(-7px) rotate(1deg);
+            }
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+        }
+
+        @keyframes explosion {
+            0% {
+                opacity: 1;
+                transform:
+                    translate(0,0)
+                    scale(.5)
+                    rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    translate(
+                        var(--x),
+                        var(--y)
+                    )
+                    scale(1.5)
+                    rotate(180deg);
+            }
+        }
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (max-height: 650px) {
+            .marco {
+                height: 94vh;
+                padding-top: 18px;
+            }
+
+            .ramo {
+                transform: scale(.82);
+                margin-top: -20px;
+                margin-bottom: -25px;
+            }
+
+            .mensaje {
+                padding: 12px;
+            }
+
+            .oso {
+                transform: scale(.8);
+                transform-origin: bottom right;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="marco">
+
+        <div class="brillo"></div>
+        <div class="brillo2"></div>
+
+        <!-- Decoraciones -->
+        <div class="detalle d1">✨</div>
+        <div class="detalle d2">🌼</div>
+        <div class="detalle d3">💛</div>
+        <div class="detalle d4">✦</div>
+
+        <!-- ENCABEZADO -->
+        <header class="encabezado">
+
+            <div class="mini">
+                Una pequeña sorpresa para ti
+            </div>
+
+            <h1>Grecia 🌻</h1>
+
+            <p>
+                Porque hay personas que merecen flores
+                sin necesitar una razón.
+            </p>
+
+        </header>
+
+        <!-- RAMO -->
+        <section class="ramo">
+
+            <!-- Tallos -->
+            <div class="tallo t1"></div>
+            <div class="tallo t2"></div>
+            <div class="tallo t3"></div>
+            <div class="tallo t4"></div>
+            <div class="tallo t5"></div>
+
+            <!-- Hojas -->
+            <div class="hoja h1"></div>
+            <div class="hoja h2"></div>
+            <div class="hoja h3"></div>
+            <div class="hoja h4"></div>
+
+            <!-- Flores -->
+            <div class="flor flor1">
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="centro"></div>
+            </div>
+
+            <div class="flor flor2">
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="centro"></div>
+            </div>
+
+            <div class="flor flor3">
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="centro"></div>
+            </div>
+
+            <div class="flor flor4">
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="centro"></div>
+            </div>
+
+            <div class="flor flor5">
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="centro"></div>
+            </div>
+
+            <!-- Envoltura -->
+            <div class="envoltura"></div>
+            <div class="cinta"></div>
+
+        </section>
+
+        <!-- OSITO -->
+        <div class="oso">
+
+            <div class="oreja oreja1"></div>
+            <div class="oreja oreja2"></div>
+
+            <div class="cabeza">
+
+                <div class="ojo ojo1"></div>
+                <div class="ojo ojo2"></div>
+
+                <div class="hocico"></div>
+
+                <div class="nariz"></div>
+
+            </div>
+
+            <div class="cuerpo">
+                <div class="corazon">♥</div>
+            </div>
+
+        </div>
+
+        <!-- MENSAJE -->
+        <section class="mensaje">
+
+            <p>
+                <strong>Grecia</strong>, dicen que las flores
+                amarillas representan alegría, cariño y nuevos comienzos...
+                pero yo creo que también pueden decir algo mucho más sencillo:
+                <br><br>
+
+                <strong>
+                    "Quería regalarte un poquito de luz,
+                    porque tú haces que algunos días
+                    se sientan más bonitos." 💛
+                </strong>
+            </p>
+
+            <div class="firma">
+                Con cariño 🌻
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        /*
+         * ==========================================
+         * ESTRELLAS AL TOCAR / HACER CLICK
+         * ==========================================
+         */
+
+        function crearChispas(x, y) {
+
+            const cantidad = 10;
+
+            for (let i = 0; i < cantidad; i++) {
+
+                const chispa = document.createElement("div");
+
+                chispa.className = "chispa";
+
+                chispa.textContent =
+                    Math.random() > 0.5 ? "✦" : "✧";
+
+                chispa.style.left = x + "px";
+                chispa.style.top = y + "px";
+
+                const angulo =
+                    Math.random() * Math.PI * 2;
+
+                const distancia =
+                    25 + Math.random() * 55;
+
+                const movimientoX =
+                    Math.cos(angulo) * distancia;
+
+                const movimientoY =
+                    Math.sin(angulo) * distancia;
+
+                chispa.style.setProperty(
+                    "--x",
+                    movimientoX + "px"
+                );
+
+                chispa.style.setProperty(
+                    "--y",
+                    movimientoY + "px"
+                );
+
+                document.body.appendChild(chispa);
+
+                setTimeout(() => {
+                    chispa.remove();
+                }, 800);
+            }
+        }
+
+        /*
+         * Compatible con celular y computadora
+         */
+
+        document.addEventListener(
+            "click",
+            function(event) {
+                crearChispas(
+                    event.clientX,
+                    event.clientY
+                );
+            }
+        );
+
+        document.addEventListener(
+            "touchstart",
+            function(event) {
+
+                const touch =
+                    event.touches[0];
+
+                crearChispas(
+                    touch.clientX,
+                    touch.clientY
+                );
+
+            },
+            { passive: true }
+        );
+
+    </script>
+
+</body>
+</html>
