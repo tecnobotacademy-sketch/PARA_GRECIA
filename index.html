@@ -1,1152 +1,295 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,
-                   maximum-scale=1.0, user-scalable=no">
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no">
+
+    <meta name="theme-color" content="#ffd85c">
 
     <title>Para Grecia 🌻</title>
 
-    <style>
-        /* =====================================================
-           CONFIGURACIÓN GENERAL
-        ===================================================== */
-
-        :root {
-            color-scheme: light;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            width: 100%;
-            min-height: 100%;
-            background: #ffd85c;
-            color-scheme: light;
-            overflow-x: hidden;
-            overflow-y: auto;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            width: 100%;
-            min-height: 100%;
-            background:
-                radial-gradient(circle at 20% 10%, #fff5b8 0%, transparent 30%),
-                radial-gradient(circle at 80% 80%, #ffe88a 0%, transparent 35%),
-                linear-gradient(135deg, #ffd84d, #fff0a8);
-
-            font-family: "Segoe UI", Arial, sans-serif;
-
-            overflow-x: hidden;
-            overflow-y: auto;
-
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-y: auto;
-
-            color: #553b12;
-            position: relative;
-        }
-
-        /* =====================================================
-           CONTENEDOR PRINCIPAL
-        ===================================================== */
-
-        .pagina {
-            width: 100%;
-            min-height: 100vh;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            padding: 25px 15px 70px;
-
-            position: relative;
-        }
-
-        .marco {
-            width: min(94%, 650px);
-
-            min-height: auto;
-
-            background: rgba(255, 252, 235, 0.95);
-
-            border: 4px solid #f2bf32;
-            border-radius: 28px;
-
-            box-shadow:
-                0 15px 40px rgba(115, 75, 0, 0.25),
-                inset 0 0 25px rgba(255, 220, 90, 0.25);
-
-            padding: 28px 20px 40px;
-
-            position: relative;
-
-            overflow: visible;
-        }
-
-        /* =====================================================
-           ENCABEZADO
-        ===================================================== */
-
-        .encabezado {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .encabezado h1 {
-            font-size: clamp(2rem, 8vw, 3.2rem);
-            color: #d69a00;
-            text-shadow: 2px 3px 0 #fff1a8;
-
-            animation: aparecer 1.2s ease;
-        }
-
-        .encabezado p {
-            margin-top: 8px;
-            font-size: 1rem;
-            color: #80601e;
-        }
-
-        /* =====================================================
-           RAMO
-        ===================================================== */
-
-        .ramo-container {
-            width: 100%;
-            height: 330px;
-
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .ramo {
-            width: 270px;
-            height: 300px;
-
-            position: relative;
-
-            transform-origin: bottom center;
-
-            animation: balanceo 5s ease-in-out infinite;
-        }
-
-        /* Tallos */
-
-        .tallo {
-            position: absolute;
-
-            width: 7px;
-            height: 180px;
-
-            background: linear-gradient(
-                to right,
-                #3e8f42,
-                #70bd55,
-                #35763a
-            );
-
-            border-radius: 10px;
-
-            bottom: 60px;
-            left: 50%;
-
-            transform-origin: bottom center;
-        }
-
-        .tallo:nth-child(1) {
-            transform: rotate(-24deg);
-        }
-
-        .tallo:nth-child(2) {
-            transform: rotate(-10deg);
-        }
-
-        .tallo:nth-child(3) {
-            transform: rotate(8deg);
-        }
-
-        .tallo:nth-child(4) {
-            transform: rotate(23deg);
-        }
-
-        /* Flores */
-
-        .flor {
-            position: absolute;
-
-            width: 105px;
-            height: 105px;
-
-            z-index: 5;
-
-            animation: flotar 4s ease-in-out infinite;
-        }
-
-        .flor1 {
-            top: 20px;
-            left: 10px;
-        }
-
-        .flor2 {
-            top: 0;
-            left: 85px;
-            animation-delay: .4s;
-        }
-
-        .flor3 {
-            top: 25px;
-            right: 5px;
-            animation-delay: .8s;
-        }
-
-        .flor4 {
-            top: 70px;
-            left: 80px;
-            transform: scale(.85);
-            animation-delay: 1s;
-        }
-
-        .petalo {
-            position: absolute;
-
-            width: 46px;
-            height: 68px;
-
-            left: 30px;
-            top: 18px;
-
-            background: linear-gradient(
-                135deg,
-                #fff36b,
-                #f6c928
-            );
-
-            border-radius: 55% 55% 45% 45%;
-
-            box-shadow:
-                inset -5px -5px 10px rgba(190, 140, 0, .15),
-                0 3px 8px rgba(130, 90, 0, .15);
-
-            transform-origin: 50% 75%;
-        }
-
-        .petalo:nth-child(1) {
-            transform: rotate(0deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(2) {
-            transform: rotate(45deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(3) {
-            transform: rotate(90deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(4) {
-            transform: rotate(135deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(5) {
-            transform: rotate(180deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(6) {
-            transform: rotate(225deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(7) {
-            transform: rotate(270deg) translateY(-20px);
-        }
-
-        .petalo:nth-child(8) {
-            transform: rotate(315deg) translateY(-20px);
-        }
-
-        .centro {
-            position: absolute;
-
-            width: 38px;
-            height: 38px;
-
-            left: 34px;
-            top: 34px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    #ffe78a,
-                    #a96a00
-                );
-
-            z-index: 10;
-
-            box-shadow:
-                inset 0 2px 5px rgba(255,255,255,.4),
-                0 3px 7px rgba(80,50,0,.25);
-        }
-
-        /* Hojas */
-
-        .hoja {
-            position: absolute;
-
-            width: 65px;
-            height: 30px;
-
-            background: linear-gradient(
-                135deg,
-                #78c95c,
-                #3c8d42
-            );
-
-            border-radius: 100% 0 100% 0;
-
-            bottom: 115px;
-
-            z-index: 2;
-        }
-
-        .hoja1 {
-            left: 40px;
-            transform: rotate(-30deg);
-        }
-
-        .hoja2 {
-            right: 30px;
-            transform: rotate(30deg) scaleX(-1);
-        }
-
-        /* Envoltura */
-
-        .envoltura {
-            position: absolute;
-
-            width: 210px;
-            height: 120px;
-
-            bottom: 15px;
-            left: 30px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #fffdf1,
-                    #f4df9b
-                );
-
-            clip-path: polygon(
-                10% 0,
-                90% 0,
-                70% 100%,
-                30% 100%
-            );
-
-            z-index: 20;
-
-            filter: drop-shadow(
-                0 8px 6px rgba(80,50,0,.18)
-            );
-        }
-
-        .cinta {
-            position: absolute;
-
-            width: 105px;
-            height: 25px;
-
-            left: 83px;
-            bottom: 30px;
-
-            background: #e7aa16;
-
-            border-radius: 15px;
-
-            z-index: 25;
-
-            box-shadow: 0 3px 5px rgba(80,50,0,.2);
-        }
-
-        /* =====================================================
-           OSITO
-        ===================================================== */
-
-        .oso-area {
-            height: 230px;
-
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-
-            margin-top: 10px;
-
-            overflow: hidden;
-        }
-
-        .oso {
-            width: 145px;
-            height: 170px;
-
-            position: relative;
-
-            animation:
-                osito 3.5s ease-in-out infinite;
-        }
-
-        .cabeza {
-            position: absolute;
-
-            width: 105px;
-            height: 95px;
-
-            background: linear-gradient(
-                145deg,
-                #c99758,
-                #8a5c2f
-            );
-
-            border-radius: 50%;
-
-            left: 20px;
-            top: 5px;
-
-            box-shadow:
-                inset -8px -10px 15px rgba(80,40,10,.25),
-                0 8px 15px rgba(80,50,0,.2);
-        }
-
-        .oreja {
-            position: absolute;
-
-            width: 42px;
-            height: 42px;
-
-            background: #a8733d;
-
-            border-radius: 50%;
-
-            top: -8px;
-
-            z-index: -1;
-        }
-
-        .oreja1 {
-            left: 5px;
-        }
-
-        .oreja2 {
-            right: 5px;
-        }
-
-        .ojo {
-            position: absolute;
-
-            width: 9px;
-            height: 12px;
-
-            background: #24170d;
-
-            border-radius: 50%;
-
-            top: 42px;
-        }
-
-        .ojo1 {
-            left: 30px;
-        }
-
-        .ojo2 {
-            right: 30px;
-        }
-
-        .hocico {
-            position: absolute;
-
-            width: 45px;
-            height: 35px;
-
-            background: #d7aa76;
-
-            border-radius: 50%;
-
-            left: 30px;
-            top: 54px;
-        }
-
-        .nariz {
-            position: absolute;
-
-            width: 14px;
-            height: 10px;
-
-            background: #352013;
-
-            border-radius: 50%;
-
-            left: 15px;
-            top: 8px;
-        }
-
-        .cuerpo {
-            position: absolute;
-
-            width: 100px;
-            height: 95px;
-
-            left: 23px;
-            bottom: 0;
-
-            background: linear-gradient(
-                145deg,
-                #bd8b51,
-                #81542c
-            );
-
-            border-radius: 45% 45% 35% 35%;
-        }
-
-        .barriga {
-            position: absolute;
-
-            width: 65px;
-            height: 60px;
-
-            background: #d6a36b;
-
-            border-radius: 50%;
-
-            left: 18px;
-            top: 17px;
-        }
-
-        .corazon {
-            position: absolute;
-
-            font-size: 27px;
-
-            left: 18px;
-            top: 14px;
-        }
-
-        /* =====================================================
-           MENSAJE
-        ===================================================== */
-
-        .mensaje {
-            margin-top: 30px;
-
-            text-align: center;
-
-            padding: 10px 5px;
-        }
-
-        .mensaje h2 {
-            font-size: clamp(1.5rem, 6vw, 2.2rem);
-
-            color: #c78b00;
-
-            margin-bottom: 20px;
-        }
-
-        .mensaje p {
-            font-size: 1.08rem;
-
-            line-height: 1.8;
-
-            color: #624916;
-
-            margin-bottom: 18px;
-        }
-
-        .frase {
-            margin: 25px 0;
-
-            padding: 20px 15px;
-
-            background: linear-gradient(
-                135deg,
-                #fff6bf,
-                #fffbe2
-            );
-
-            border-radius: 20px;
-
-            border: 2px solid #f2ca51;
-
-            box-shadow:
-                0 8px 20px rgba(150,100,0,.12);
-
-            font-size: 1.2rem !important;
-
-            font-weight: 600;
-
-            color: #9a6c00 !important;
-        }
-
-        .firma {
-            font-size: 1.3rem !important;
-
-            font-weight: bold;
-
-            color: #d29400 !important;
-
-            margin-top: 25px;
-        }
-
-        /* =====================================================
-           INDICADOR DE SCROLL
-        ===================================================== */
-
-        .scroll {
-            margin-top: 25px;
-
-            text-align: center;
-
-            color: #b17a00;
-
-            font-size: .9rem;
-
-            animation: subirBajar 1.8s ease-in-out infinite;
-        }
-
-        /* =====================================================
-           ESTRELLAS
-        ===================================================== */
-
-        .estrella {
-            position: fixed;
-
-            pointer-events: none;
-
-            z-index: 9999;
-
-            font-size: 13px;
-
-            animation: estrellaAnim 900ms ease-out forwards;
-        }
-
-        /* =====================================================
-           ANIMACIONES
-        ===================================================== */
-
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(-25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes balanceo {
-            0%,100% {
-                transform: rotate(-2deg);
-            }
-
-            50% {
-                transform: rotate(2deg);
-            }
-        }
-
-        @keyframes flotar {
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-7px);
-            }
-        }
-
-        @keyframes osito {
-            0%,100% {
-                transform: translateY(0) rotate(-1deg);
-            }
-
-            50% {
-                transform: translateY(-8px) rotate(1deg);
-            }
-        }
-
-        @keyframes subirBajar {
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(7px);
-            }
-        }
-
-        @keyframes estrellaAnim {
-            0% {
-                opacity: 1;
-                transform:
-                    translate(0,0)
-                    scale(.5)
-                    rotate(0deg);
-            }
-
-            100% {
-                opacity: 0;
-                transform:
-                    translate(
-                        var(--dx),
-                        var(--dy)
-                    )
-                    scale(1.5)
-                    rotate(180deg);
-            }
-        }
-
-        /* =====================================================
-           MÓVIL
-        ===================================================== */
-
-        @media (max-width: 500px) {
-
-            .pagina {
-                padding: 12px 8px 60px;
-            }
-
-            .marco {
-                width: 96%;
-
-                padding:
-                    22px 14px 35px;
-
-                border-radius: 23px;
-            }
-
-            .ramo-container {
-                height: 300px;
-            }
-
-            .ramo {
-                transform: scale(.9);
-            }
-
-            .oso-area {
-                height: 210px;
-            }
-
-            .mensaje p {
-                font-size: 1rem;
-                line-height: 1.75;
-            }
-
-            .frase {
-                font-size: 1.05rem !important;
-                padding: 18px 12px;
-            }
-        }
-
-        /* =====================================================
-           EVITAR QUE EL MODO OSCURO DEL CELULAR CAMBIE TODO
-        ===================================================== */
-
-        @media (prefers-color-scheme: dark) {
-
-            html {
-                background: #ffd85c;
-                color-scheme: light;
-            }
-
-            body {
-                background:
-                    radial-gradient(
-                        circle at 20% 10%,
-                        #fff5b8 0%,
-                        transparent 30%
-                    ),
-                    radial-gradient(
-                        circle at 80% 80%,
-                        #ffe88a 0%,
-                        transparent 35%
-                    ),
-                    linear-gradient(
-                        135deg,
-                        #ffd84d,
-                        #fff0a8
-                    );
-
-                color: #553b12;
-            }
-
-            .marco {
-                background: rgba(255,252,235,.95);
-                color: #553b12;
-            }
-
-            .mensaje p {
-                color: #624916;
-            }
-
-            .frase {
-                background:
-                    linear-gradient(
-                        135deg,
-                        #fff6bf,
-                        #fffbe2
-                    );
-            }
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
 
-<div class="pagina">
+    <div class="pagina">
 
-    <main class="marco">
+        <main class="marco">
 
-        <!-- =================================================
-             ENCABEZADO
-        ================================================== -->
+            <!-- =========================================
+                 ENCABEZADO
+            ========================================== -->
 
-        <header class="encabezado">
+            <header class="encabezado">
 
-            <h1>Para Grecia 🌻</h1>
+                <h1>Para Grecia 🌻</h1>
 
-            <p>
-                Una pequeña sorpresa hecha especialmente para ti...
-            </p>
+                <p>
+                    Una pequeña sorpresa hecha especialmente para ti...
+                </p>
 
-        </header>
+            </header>
 
 
-        <!-- =================================================
-             RAMO
-        ================================================== -->
+            <!-- =========================================
+                 RAMO DE FLORES
+            ========================================== -->
 
-        <section class="ramo-container">
+            <section class="ramo-container">
 
-            <div class="ramo">
+                <div class="ramo">
 
-                <!-- Tallos -->
-                <div class="tallo"></div>
-                <div class="tallo"></div>
-                <div class="tallo"></div>
-                <div class="tallo"></div>
+                    <!-- Tallos -->
+                    <div class="tallo"></div>
+                    <div class="tallo"></div>
+                    <div class="tallo"></div>
+                    <div class="tallo"></div>
 
-                <!-- Hojas -->
-                <div class="hoja hoja1"></div>
-                <div class="hoja hoja2"></div>
+                    <!-- Hojas -->
+                    <div class="hoja hoja1"></div>
+                    <div class="hoja hoja2"></div>
 
-                <!-- Flor 1 -->
-                <div class="flor flor1">
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="centro"></div>
+
+                    <!-- FLOR 1 -->
+                    <div class="flor flor1">
+
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+
+                        <div class="centro"></div>
+
+                    </div>
+
+
+                    <!-- FLOR 2 -->
+                    <div class="flor flor2">
+
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+
+                        <div class="centro"></div>
+
+                    </div>
+
+
+                    <!-- FLOR 3 -->
+                    <div class="flor flor3">
+
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+
+                        <div class="centro"></div>
+
+                    </div>
+
+
+                    <!-- FLOR 4 -->
+                    <div class="flor flor4">
+
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+
+                        <div class="centro"></div>
+
+                    </div>
+
+
+                    <!-- Envoltura -->
+                    <div class="envoltura"></div>
+
+                    <!-- Cinta -->
+                    <div class="cinta"></div>
+
                 </div>
 
-                <!-- Flor 2 -->
-                <div class="flor flor2">
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="centro"></div>
-                </div>
-
-                <!-- Flor 3 -->
-                <div class="flor flor3">
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="centro"></div>
-                </div>
-
-                <!-- Flor 4 -->
-                <div class="flor flor4">
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="petalo"></div>
-                    <div class="centro"></div>
-                </div>
-
-                <div class="envoltura"></div>
-                <div class="cinta"></div>
-
-            </div>
-
-        </section>
+            </section>
 
 
-        <!-- =================================================
-             OSITO
-        ================================================== -->
+            <!-- =========================================
+                 OSITO
+            ========================================== -->
 
-        <section class="oso-area">
+            <section class="oso-area">
 
-            <div class="oso">
+                <div class="oso">
 
-                <div class="cabeza">
+                    <!-- Cabeza -->
+                    <div class="cabeza">
 
-                    <div class="oreja oreja1"></div>
-                    <div class="oreja oreja2"></div>
+                        <!-- Orejas -->
+                        <div class="oreja oreja1"></div>
+                        <div class="oreja oreja2"></div>
 
-                    <div class="ojo ojo1"></div>
-                    <div class="ojo ojo2"></div>
+                        <!-- Ojos -->
+                        <div class="ojo ojo1"></div>
+                        <div class="ojo ojo2"></div>
 
-                    <div class="hocico">
-                        <div class="nariz"></div>
+                        <!-- Hocico -->
+                        <div class="hocico">
+
+                            <div class="nariz"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Cuerpo -->
+                    <div class="cuerpo">
+
+                        <div class="barriga">
+
+                            <span class="corazon">
+                                💛
+                            </span>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="cuerpo">
+            </section>
 
-                    <div class="barriga">
-                        <span class="corazon">💛</span>
-                    </div>
+
+            <!-- =========================================
+                 MENSAJE
+            ========================================== -->
+
+            <section class="mensaje">
+
+                <h2>
+                    Un pequeño detalle para ti 💛
+                </h2>
+
+
+                <p>
+                    Grecia, dicen que las flores amarillas
+                    representan alegría, cariño y buenos deseos...
+                </p>
+
+
+                <p>
+                    Y pensé que no podía encontrar una forma
+                    más bonita de decirte que espero que
+                    siempre tengas motivos para sonreír.
+                </p>
+
+
+                <!-- FRASE PRINCIPAL -->
+
+                <div class="frase">
+
+                    🌻
+
+                    <br><br>
+
+                    "Que nunca te falten motivos para sonreír,
+                    personas que te quieran bonito y momentos
+                    que hagan que tu corazón se sienta en casa."
+
+                    <br><br>
+
+                    ✨💛✨
 
                 </div>
 
-            </div>
 
-        </section>
+                <p>
+                    Este pequeño ramo no puede compararse
+                    con una sonrisa tuya, pero al menos
+                    quería regalarte un pedacito de alegría.
+                </p>
 
 
-        <!-- =================================================
-             MENSAJE
-        ================================================== -->
+                <p>
+                    Así que cuando veas estas flores,
+                    recuerda que alguien quiso hacerte
+                    sonreír aunque fuera por unos minutos. 🌻
+                </p>
 
-        <section class="mensaje">
 
-            <h2>Un pequeño detalle para ti 💛</h2>
+                <p>
+                    A veces los detalles más pequeños
+                    son los que terminan guardándose
+                    en los recuerdos más bonitos.
+                </p>
 
-            <p>
-                Grecia, dicen que las flores amarillas representan
-                alegría, cariño y buenos deseos...
-            </p>
 
-            <p>
-                Y pensé que no podía encontrar una forma más bonita
-                de decirte que espero que siempre tengas motivos
-                para sonreír.
-            </p>
+                <p>
+                    Espero que este pequeño detalle
+                    consiga sacarte aunque sea una
+                    pequeña sonrisa. ✨
+                </p>
 
-            <div class="frase">
 
-                🌻
-                <br><br>
+                <p class="firma">
 
-                "Que nunca te falten motivos para sonreír,
-                personas que te quieran bonito
-                y momentos que hagan que tu corazón
-                se sienta en casa."
+                    Para ti, Grecia 💛
 
-                <br><br>
+                    <br>
 
-                ✨💛✨
+                    Con mucho cariño ✨
 
-            </div>
+                </p>
 
-            <p>
-                Este pequeño ramo no puede compararse con una
-                sonrisa tuya, pero al menos quería regalarte
-                un pedacito de alegría.
-            </p>
+            </section>
 
-            <p>
-                Así que cuando veas estas flores,
-                recuerda que alguien quiso hacerte
-                sonreír aunque fuera por unos minutos. 🌻
-            </p>
 
-            <p class="firma">
-                Para ti, Grecia 💛
+            <!-- =========================================
+                 INDICADOR
+            ========================================== -->
+
+            <div class="scroll">
+
+                ↓ desliza hacia abajo ↓
+
                 <br>
-                Con mucho cariño ✨
-            </p>
 
-        </section>
+                ✨ todavía hay un poquito más ✨
 
+            </div>
 
-        <div class="scroll">
-            ↓ desliza hacia abajo ↓
-            <br>
-            ✨ todavía hay un poquito más ✨
-        </div>
+        </main>
 
-    </main>
-
-</div>
+    </div>
 
 
-<script>
-
-    /* =====================================================
-       ESTRELLITAS AL TOCAR
-    ===================================================== */
-
-    function crearEstrella(x, y) {
-
-        const estrella = document.createElement("div");
-
-        estrella.className = "estrella";
-
-        const simbolos = [
-            "✦",
-            "✧",
-            "⋆",
-            "✨",
-            "✩"
-        ];
-
-        estrella.textContent =
-            simbolos[
-                Math.floor(
-                    Math.random() * simbolos.length
-                )
-            ];
-
-        estrella.style.left = x + "px";
-        estrella.style.top = y + "px";
-
-        estrella.style.setProperty(
-            "--dx",
-            (Math.random() * 80 - 40) + "px"
-        );
-
-        estrella.style.setProperty(
-            "--dy",
-            (Math.random() * -100 - 20) + "px"
-        );
-
-        document.body.appendChild(estrella);
-
-        setTimeout(() => {
-            estrella.remove();
-        }, 900);
-    }
-
-
-    /* =====================================================
-       TOQUE
-    ===================================================== */
-
-    document.addEventListener(
-        "touchstart",
-        function(e) {
-
-            const touch = e.touches[0];
-
-            for (let i = 0; i < 3; i++) {
-
-                crearEstrella(
-                    touch.clientX +
-                    (Math.random() * 30 - 15),
-
-                    touch.clientY +
-                    (Math.random() * 30 - 15)
-                );
-
-            }
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    /* =====================================================
-       ESTRELLITAS MIENTRAS DESLIZAS
-    ===================================================== */
-
-    let ultimoX = 0;
-    let ultimoY = 0;
-
-    document.addEventListener(
-        "touchmove",
-        function(e) {
-
-            const touch = e.touches[0];
-
-            const distancia =
-                Math.abs(touch.clientX - ultimoX) +
-                Math.abs(touch.clientY - ultimoY);
-
-            if (distancia > 35) {
-
-                crearEstrella(
-                    touch.clientX,
-                    touch.clientY
-                );
-
-                ultimoX = touch.clientX;
-                ultimoY = touch.clientY;
-            }
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    /* =====================================================
-       CLICK PARA PC
-    ===================================================== */
-
-    document.addEventListener(
-        "click",
-        function(e) {
-
-            for (let i = 0; i < 4; i++) {
-
-                crearEstrella(
-                    e.clientX +
-                    (Math.random() * 40 - 20),
-
-                    e.clientY +
-                    (Math.random() * 40 - 20)
-                );
-
-            }
-
-        }
-    );
-
-</script>
+    <!-- JavaScript -->
+    <script src="js/efectos.js"></script>
 
 </body>
+
 </html>
