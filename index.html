@@ -1,370 +1,168 @@
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
+```css
+/* ==========================================
+   PROTECCIÓN CONTRA DARK MODE DEL CELULAR
+   ========================================== */
 
-<title>Para Grecia 🌻</title>
+/*
+   La página mantiene su propio diseño
+   independientemente del tema del teléfono.
+*/
 
-<style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    color-scheme: light;
 }
 
+/* Evita que navegadores intenten
+   invertir automáticamente los colores */
+
 html {
-    scroll-behavior: smooth;
+    color-scheme: light;
+    background: #ffd45a;
 }
 
 body {
-    min-height: 100vh;
-
     background:
         radial-gradient(
             circle at 50% 10%,
-            #fffde1,
-            transparent 35%
+            #fffde1 0%,
+            #fff1a8 25%,
+            transparent 55%
         ),
         linear-gradient(
             180deg,
-            #ffe990,
-            #ffd45a,
-            #f5bd35
+            #ffe990 0%,
+            #ffd45a 50%,
+            #f5bd35 100%
         );
 
-    font-family: "Segoe UI", sans-serif;
+    color: #74531c;
 
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
+    /*
+       Esto evita que el navegador
+       modifique el aspecto de la página.
+    */
+    forced-color-adjust: none;
 }
 
-/* ======================================
-   CONTENEDOR PRINCIPAL
-====================================== */
+/* ==========================================
+   MARCO
+========================================== */
 
 .marco {
-    width: min(94%, 480px);
-
-    min-height: 100vh;
-
-    margin: 0 auto;
-
-    padding:
-        35px 20px
-        60px;
-
-    position: relative;
-
-    overflow: hidden;
-
     background:
         linear-gradient(
             180deg,
-            rgba(255,255,255,.90),
-            rgba(255,249,211,.94)
+            rgba(255,255,255,.96),
+            rgba(255,249,211,.97)
         );
 
-    border-left:
-        2px solid rgba(255,255,255,.8);
+    color: #74531c;
 
-    border-right:
-        2px solid rgba(255,255,255,.8);
-
-    box-shadow:
-        0 0 40px rgba(122,85,0,.20);
-
-    isolation: isolate;
+    forced-color-adjust: none;
 }
 
-/* ======================================
-   BRILLOS DEL FONDO
-====================================== */
+/* ==========================================
+   TEXTOS
+========================================== */
 
-.brillo {
-    position: absolute;
-
-    width: 260px;
-    height: 260px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.9),
-            transparent 70%
-        );
-
-    top: -120px;
-    left: -120px;
-
-    z-index: -1;
-}
-
-.brillo2 {
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,210,50,.25),
-            transparent 70%
-        );
-
-    bottom: -120px;
-    right: -120px;
-
-    z-index: -1;
-}
-
-/* ======================================
-   ENCABEZADO
-====================================== */
-
-.encabezado {
-    text-align: center;
-
-    position: relative;
-
-    z-index: 10;
-
-    animation:
-        aparecer 1.2s ease;
-}
-
-.mini {
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    color: #a47713;
-
-    margin-bottom: 8px;
-}
-
-h1 {
-    font-family: Georgia, serif;
-
-    font-size:
-        clamp(40px, 12vw, 58px);
-
+.encabezado h1 {
     color: #755015;
 
     text-shadow:
-        0 2px 0 white,
+        0 2px 0 #ffffff,
         0 5px 15px
-        rgba(100,70,0,.2);
+        rgba(100,70,0,.20);
+}
+
+.encabezado .mini {
+    color: #a47713;
 }
 
 .encabezado p {
-    margin-top: 10px;
-
-    font-size: 14px;
-
-    line-height: 1.5;
-
     color: #876b32;
 }
 
-/* ======================================
-   RAMO
-====================================== */
-
-.ramo {
-    position: relative;
-
-    width: 290px;
-    height: 320px;
-
-    margin:
-        10px auto
-        20px;
-
-    animation:
-        balanceo 5s ease-in-out infinite;
-
-    transform-origin: bottom center;
-
-    z-index: 5;
+.mensaje p,
+.final p {
+    color: #74531c;
 }
 
-/* ======================================
-   TALLOS
-====================================== */
+.mensaje strong,
+.final strong {
+    color: #c58a00;
+}
 
-.tallo {
-    position: absolute;
+.firma {
+    color: #9a7632;
+}
 
-    width: 7px;
-    height: 205px;
+.desliza {
+    color: #a57b24;
+}
 
-    left: 50%;
-    bottom: 20px;
+/* ==========================================
+   TARJETAS
+========================================== */
 
-    border-radius: 10px;
+.mensaje,
+.final {
+    background:
+        rgba(255,255,255,.78);
 
+    border:
+        1px solid
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 15px 30px
+        rgba(120,80,0,.12);
+
+    /*
+       Mantiene la tarjeta clara
+       incluso con el sistema oscuro.
+    */
+    color: #74531c;
+}
+
+/* ==========================================
+   OSITO
+========================================== */
+
+.cabeza {
     background:
         linear-gradient(
-            90deg,
-            #315d23,
-            #78a844,
-            #315d23
+            145deg,
+            #d99960,
+            #a96337
         );
-
-    transform-origin: bottom center;
 }
 
-.t1 {
-    transform: rotate(-25deg);
-}
-
-.t2 {
-    transform: rotate(-13deg);
-}
-
-.t3 {
-    transform: rotate(0);
-}
-
-.t4 {
-    transform: rotate(13deg);
-}
-
-.t5 {
-    transform: rotate(25deg);
-}
-
-/* ======================================
-   HOJAS
-====================================== */
-
-.hoja {
-    position: absolute;
-
-    width: 55px;
-    height: 22px;
-
-    left: 50%;
-    bottom: 105px;
-
-    border-radius:
-        100% 0 100% 0;
-
+.cuerpo {
     background:
         linear-gradient(
-            135deg,
-            #83b94e,
-            #396b29
+            145deg,
+            #d18b54,
+            #9c5b35
         );
-
-    transform-origin: left center;
 }
 
-.h1 {
-    transform:
-        translateX(-5px)
-        rotate(-35deg);
+.ojo {
+    background: #302016;
 }
 
-.h2 {
-    transform:
-        translateX(-5px)
-        rotate(35deg);
+.nariz {
+    background: #3b2114;
 }
 
-.h3 {
-    transform:
-        translateX(-5px)
-        translateY(35px)
-        rotate(-45deg);
+.hocico {
+    background: #f0bc84;
 }
 
-.h4 {
-    transform:
-        translateX(-5px)
-        translateY(40px)
-        rotate(45deg);
-}
-
-/* ======================================
+/* ==========================================
    FLORES
-====================================== */
-
-.flor {
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    filter:
-        drop-shadow(
-            0 8px 8px
-            rgba(100,70,0,.22)
-        );
-
-    animation:
-        florFlota 4s ease-in-out infinite;
-}
-
-.flor1 {
-    left: 0;
-    top: 45px;
-}
-
-.flor2 {
-    left: 100px;
-    top: 5px;
-
-    transform: scale(1.08);
-}
-
-.flor3 {
-    right: 0;
-    top: 45px;
-}
-
-.flor4 {
-    left: 55px;
-    top: 105px;
-
-    transform: scale(.90);
-}
-
-.flor5 {
-    right: 55px;
-    top: 105px;
-
-    transform: scale(.90);
-}
+========================================== */
 
 .petalo {
-    position: absolute;
-
-    width: 44px;
-    height: 64px;
-
-    border-radius:
-        50% 50% 45% 45%;
-
     background:
         linear-gradient(
             145deg,
@@ -372,56 +170,9 @@ h1 {
             #ffd21f 55%,
             #e8a700
         );
-
-    box-shadow:
-        inset -5px -6px 8px
-        rgba(180,110,0,.18),
-
-        inset 4px 4px 7px
-        rgba(255,255,255,.55);
-
-    transform-origin:
-        center bottom;
-}
-
-.p1 {
-    transform:
-        rotate(0deg)
-        translateY(-25px);
-}
-
-.p2 {
-    transform:
-        rotate(72deg)
-        translateY(-25px);
-}
-
-.p3 {
-    transform:
-        rotate(144deg)
-        translateY(-25px);
-}
-
-.p4 {
-    transform:
-        rotate(216deg)
-        translateY(-25px);
-}
-
-.p5 {
-    transform:
-        rotate(288deg)
-        translateY(-25px);
 }
 
 .centro {
-    position: absolute;
-
-    width: 32px;
-    height: 32px;
-
-    border-radius: 50%;
-
     background:
         radial-gradient(
             circle at 35% 30%,
@@ -429,30 +180,13 @@ h1 {
             #d88700 65%,
             #9c5d00
         );
-
-    box-shadow:
-        0 3px 8px
-        rgba(100,60,0,.35);
-
-    z-index: 4;
 }
 
-/* ======================================
+/* ==========================================
    ENVOLTURA
-====================================== */
+========================================== */
 
 .envoltura {
-    position: absolute;
-
-    bottom: 0;
-    left: 50%;
-
-    width: 200px;
-    height: 115px;
-
-    transform:
-        translateX(-50%);
-
     background:
         linear-gradient(
             110deg,
@@ -460,1031 +194,129 @@ h1 {
             #eee1bb,
             #fffaf0
         );
-
-    clip-path:
-        polygon(
-            5% 0,
-            95% 0,
-            70% 100%,
-            30% 100%
-        );
-
-    box-shadow:
-        0 12px 18px
-        rgba(100,70,0,.2);
-
-    z-index: 8;
 }
 
 .cinta {
-    position: absolute;
-
-    bottom: 48px;
-    left: 50%;
-
-    width: 50px;
-    height: 18px;
-
-    transform:
-        translateX(-50%);
-
     background: #e5a72d;
-
-    border-radius: 8px;
-
-    z-index: 10;
 }
 
-/* ======================================
-   OSITO
-====================================== */
-
-.oso {
-    position: absolute;
-
-    right: 15px;
-    top: 500px;
-
-    width: 115px;
-    height: 135px;
-
-    z-index: 20;
-
-    animation:
-        osoFlota 3.5s ease-in-out infinite;
-}
-
-.oreja {
-    position: absolute;
-
-    width: 40px;
-    height: 40px;
-
-    background: #b87945;
-
-    border-radius: 50%;
-
-    top: 0;
-}
-
-.oreja1 {
-    left: 3px;
-}
-
-.oreja2 {
-    right: 3px;
-}
-
-.cabeza {
-    position: absolute;
-
-    width: 95px;
-    height: 85px;
-
-    left: 10px;
-    top: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #d99960,
-            #a96337
-        );
-
-    border-radius: 48%;
-
-    box-shadow:
-        inset -8px -8px 12px
-        rgba(80,40,10,.18),
-
-        0 7px 10px
-        rgba(90,50,0,.2);
-}
-
-.ojo {
-    position: absolute;
-
-    width: 8px;
-    height: 8px;
-
-    top: 37px;
-
-    border-radius: 50%;
-
-    background: #302016;
-}
-
-.ojo1 {
-    left: 28px;
-}
-
-.ojo2 {
-    right: 28px;
-}
-
-.hocico {
-    position: absolute;
-
-    width: 48px;
-    height: 35px;
-
-    left: 24px;
-    bottom: 8px;
-
-    background: #f0bc84;
-
-    border-radius: 50%;
-}
-
-.nariz {
-    position: absolute;
-
-    width: 13px;
-    height: 9px;
-
-    left: 42px;
-    top: 57px;
-
-    background: #3b2114;
-
-    border-radius: 50%;
-}
-
-.cuerpo {
-    position: absolute;
-
-    width: 88px;
-    height: 65px;
-
-    left: 14px;
-    bottom: 0;
-
-    background:
-        linear-gradient(
-            145deg,
-            #d18b54,
-            #9c5b35
-        );
-
-    border-radius:
-        45% 45% 35% 35%;
-}
-
-.corazon {
-    position: absolute;
-
-    left: 32px;
-    top: 15px;
-
-    font-size: 25px;
-
-    color: #e84e4e;
-
-    animation:
-        latido 1.5s infinite;
-}
-
-/* ======================================
-   MENSAJE
-====================================== */
-
-.mensaje {
-    position: relative;
-
-    z-index: 30;
-
-    width: 100%;
-
-    margin-top: 20px;
-
-    padding:
-        25px 20px;
-
-    border-radius: 25px;
-
-    background:
-        rgba(255,255,255,.70);
-
-    border:
-        1px solid
-        rgba(255,255,255,.9);
-
-    box-shadow:
-        0 15px 30px
-        rgba(120,80,0,.12);
-
-    text-align: center;
-
-    animation:
-        aparecer 1.8s ease;
-}
-
-.mensaje p {
-    font-family: Georgia, serif;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    color: #74531c;
-}
-
-.mensaje strong {
-    color: #d49a00;
-}
-
-.firma {
-    margin-top: 20px;
-
-    font-size: 14px;
-
-    color: #9a7632;
-}
-
-/* ======================================
-   SEGUNDA PARTE DEL MENSAJE
-====================================== */
-
-.final {
-    position: relative;
-
-    z-index: 40;
-
-    margin-top: 30px;
-
-    padding: 25px 18px;
-
-    text-align: center;
-
-    border-radius: 25px;
-
-    background:
-        rgba(255,255,255,.55);
-
-    box-shadow:
-        0 10px 25px
-        rgba(100,70,0,.10);
-}
-
-.final .flor-icon {
-    font-size: 38px;
-
-    margin-bottom: 15px;
-}
-
-.final p {
-    font-family: Georgia, serif;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    color: #74531c;
-}
-
-.final strong {
-    color: #c58a00;
-}
-
-/* ======================================
-   INDICADOR DE DESLIZAMIENTO
-====================================== */
-
-.desliza {
-    margin-top: 25px;
-
-    text-align: center;
-
-    color: #a57b24;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    animation:
-        subirBajar 1.8s infinite;
-}
-
-/* ======================================
+/* ==========================================
    DECORACIONES
-====================================== */
+========================================== */
 
 .detalle {
-    position: absolute;
-
-    font-size: 22px;
-
-    opacity: .65;
-
-    z-index: 3;
-
-    animation:
-        flotar 4s ease-in-out infinite;
-
-    pointer-events: none;
+    color: #d9a400;
 }
 
-.d1 {
-    top: 120px;
-    left: 15px;
+.brillo {
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.90),
+            transparent 70%
+        );
 }
 
-.d2 {
-    top: 280px;
-    right: 15px;
+.brillo2 {
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,210,50,.25),
+            transparent 70%
+        );
 }
 
-.d3 {
-    top: 650px;
-    left: 15px;
-}
-
-.d4 {
-    bottom: 180px;
-    right: 20px;
-}
-
-/* ======================================
+/* ==========================================
    CHISPAS
-====================================== */
+========================================== */
 
 .chispa {
-    position: fixed;
-
-    left: 0;
-    top: 0;
-
-    pointer-events: none;
-
-    z-index: 99999;
-
     color: #ffd83d;
 
-    font-size: 14px;
-
-    animation:
-        explosion .75s ease-out forwards;
+    text-shadow:
+        0 0 5px #fff3a0,
+        0 0 10px #ffd83d;
 }
 
-/* ======================================
-   ANIMACIONES
-====================================== */
 
-@keyframes aparecer {
+/* ==========================================
+   COMPATIBILIDAD CON iOS / ANDROID
+========================================== */
 
-    from {
-        opacity: 0;
-        transform:
-            translateY(25px);
+@media (prefers-color-scheme: dark) {
+
+    html {
+        color-scheme: light !important;
+
+        background:
+            #ffd45a !important;
     }
 
-    to {
-        opacity: 1;
-        transform:
-            translateY(0);
+    body {
+        background:
+            radial-gradient(
+                circle at 50% 10%,
+                #fffde1 0%,
+                #fff1a8 25%,
+                transparent 55%
+            ),
+            linear-gradient(
+                180deg,
+                #ffe990 0%,
+                #ffd45a 50%,
+                #f5bd35 100%
+            ) !important;
+
+        color: #74531c !important;
     }
-
-}
-
-@keyframes balanceo {
-
-    0%,100% {
-        transform:
-            rotate(-1deg);
-    }
-
-    50% {
-        transform:
-            rotate(1.5deg);
-    }
-
-}
-
-@keyframes florFlota {
-
-    0%,100% {
-        margin-top: 0;
-    }
-
-    50% {
-        margin-top: -5px;
-    }
-
-}
-
-@keyframes osoFlota {
-
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-1deg);
-    }
-
-    50% {
-        transform:
-            translateY(-8px)
-            rotate(1deg);
-    }
-
-}
-
-@keyframes latido {
-
-    0%,100% {
-        transform:
-            scale(1);
-    }
-
-    50% {
-        transform:
-            scale(1.18);
-    }
-
-}
-
-@keyframes flotar {
-
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
-
-    50% {
-        transform:
-            translateY(-10px)
-            rotate(5deg);
-    }
-
-}
-
-@keyframes subirBajar {
-
-    0%,100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(6px);
-    }
-
-}
-
-@keyframes explosion {
-
-    0% {
-        opacity: 1;
-
-        transform:
-            translate(0,0)
-            scale(.5)
-            rotate(0deg);
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(
-                var(--x),
-                var(--y)
-            )
-            scale(1.6)
-            rotate(180deg);
-    }
-
-}
-
-/* ======================================
-   CELULARES PEQUEÑOS
-====================================== */
-
-@media (max-width: 380px) {
 
     .marco {
-        width: 100%;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255,255,255,.96),
+                rgba(255,249,211,.97)
+            ) !important;
 
-        padding-left: 15px;
-        padding-right: 15px;
+        color: #74531c !important;
     }
 
-    .ramo {
-        transform: scale(.88);
-
-        margin-top: -5px;
-        margin-bottom: -5px;
+    .encabezado h1 {
+        color: #755015 !important;
     }
 
-    .oso {
-        right: 5px;
+    .encabezado .mini {
+        color: #a47713 !important;
+    }
 
-        transform:
-            scale(.82);
+    .encabezado p {
+        color: #876b32 !important;
+    }
+
+    .mensaje,
+    .final {
+        background:
+            rgba(255,255,255,.78) !important;
+
+        color: #74531c !important;
     }
 
     .mensaje p,
     .final p {
-        font-size: 16px;
+        color: #74531c !important;
     }
 
+    .mensaje strong,
+    .final strong {
+        color: #c58a00 !important;
+    }
+
+    .firma {
+        color: #9a7632 !important;
+    }
+
+    .desliza {
+        color: #a57b24 !important;
+    }
 }
-
-</style>
-</head>
-
-<body>
-
-<main class="marco">
-
-    <div class="brillo"></div>
-    <div class="brillo2"></div>
-
-    <div class="detalle d1">✨</div>
-    <div class="detalle d2">🌼</div>
-    <div class="detalle d3">💛</div>
-    <div class="detalle d4">✦</div>
-
-
-    <!-- =================================
-         ENCABEZADO
-    ================================== -->
-
-    <header class="encabezado">
-
-        <div class="mini">
-            Una pequeña sorpresa para ti
-        </div>
-
-        <h1>Grecia 🌻</h1>
-
-        <p>
-            Hay personas que merecen flores
-            simplemente por existir.
-        </p>
-
-    </header>
-
-
-    <!-- =================================
-         RAMO
-    ================================== -->
-
-    <section class="ramo">
-
-        <div class="tallo t1"></div>
-        <div class="tallo t2"></div>
-        <div class="tallo t3"></div>
-        <div class="tallo t4"></div>
-        <div class="tallo t5"></div>
-
-        <div class="hoja h1"></div>
-        <div class="hoja h2"></div>
-        <div class="hoja h3"></div>
-        <div class="hoja h4"></div>
-
-
-        <!-- FLOR 1 -->
-
-        <div class="flor flor1">
-
-            <div class="petalo p1"></div>
-            <div class="petalo p2"></div>
-            <div class="petalo p3"></div>
-            <div class="petalo p4"></div>
-            <div class="petalo p5"></div>
-
-            <div class="centro"></div>
-
-        </div>
-
-
-        <!-- FLOR 2 -->
-
-        <div class="flor flor2">
-
-            <div class="petalo p1"></div>
-            <div class="petalo p2"></div>
-            <div class="petalo p3"></div>
-            <div class="petalo p4"></div>
-            <div class="petalo p5"></div>
-
-            <div class="centro"></div>
-
-        </div>
-
-
-        <!-- FLOR 3 -->
-
-        <div class="flor flor3">
-
-            <div class="petalo p1"></div>
-            <div class="petalo p2"></div>
-            <div class="petalo p3"></div>
-            <div class="petalo p4"></div>
-            <div class="petalo p5"></div>
-
-            <div class="centro"></div>
-
-        </div>
-
-
-        <!-- FLOR 4 -->
-
-        <div class="flor flor4">
-
-            <div class="petalo p1"></div>
-            <div class="petalo p2"></div>
-            <div class="petalo p3"></div>
-            <div class="petalo p4"></div>
-            <div class="petalo p5"></div>
-
-            <div class="centro"></div>
-
-        </div>
-
-
-        <!-- FLOR 5 -->
-
-        <div class="flor flor5">
-
-            <div class="petalo p1"></div>
-            <div class="petalo p2"></div>
-            <div class="petalo p3"></div>
-            <div class="petalo p4"></div>
-            <div class="petalo p5"></div>
-
-            <div class="centro"></div>
-
-        </div>
-
-
-        <div class="envoltura"></div>
-
-        <div class="cinta"></div>
-
-    </section>
-
-
-    <!-- =================================
-         OSITO
-    ================================== -->
-
-    <div class="oso">
-
-        <div class="oreja oreja1"></div>
-        <div class="oreja oreja2"></div>
-
-        <div class="cabeza">
-
-            <div class="ojo ojo1"></div>
-            <div class="ojo ojo2"></div>
-
-            <div class="hocico"></div>
-
-            <div class="nariz"></div>
-
-        </div>
-
-        <div class="cuerpo">
-
-            <div class="corazon">
-                ♥
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================
-         PRIMER MENSAJE
-    ================================== -->
-
-    <section class="mensaje">
-
-        <p>
-
-            <strong>Grecia</strong>,
-
-            hay detalles que no necesitan
-            una fecha especial para tener sentido.
-
-            <br><br>
-
-            A veces simplemente nace el deseo
-            de hacerle sonreír a alguien...
-
-            <br><br>
-
-            y hoy quería que ese detalle
-            fuera para ti. 💛
-
-            <br><br>
-
-            Porque las flores amarillas
-            tienen algo especial:
-
-            <br>
-
-            parecen guardar un poquito
-            de sol entre sus pétalos.
-
-        </p>
-
-        <div class="firma">
-            🌻 Para una persona especial
-        </div>
-
-    </section>
-
-
-    <!-- =================================
-         SEGUNDO MENSAJE
-    ================================== -->
-
-    <section class="final">
-
-        <div class="flor-icon">
-            🌻
-        </div>
-
-        <p>
-
-            <strong>
-                Y si alguna vez tienes
-                un día gris...
-            </strong>
-
-            <br><br>
-
-            recuerda que siempre puede
-            aparecer un pequeño rayo de luz
-            cuando menos lo esperas.
-
-            <br><br>
-
-            Espero que estas flores
-            puedan sacarte aunque sea
-            una pequeña sonrisa.
-
-            <br><br>
-
-            <strong>
-                Porque tu sonrisa
-                también merece flores. 💛
-            </strong>
-
-        </p>
-
-    </section>
-
-
-    <!-- =================================
-         FINAL
-    ================================== -->
-
-    <section class="final">
-
-        <div class="flor-icon">
-            ✨🌻✨
-        </div>
-
-        <p>
-
-            Y bueno...
-
-            <br><br>
-
-            esta pequeña página
-            termina aquí,
-
-            pero el detalle
-            era simplemente decirte:
-
-            <br><br>
-
-            <strong>
-                Gracias por ser tú, Grecia. 💛
-            </strong>
-
-            <br><br>
-
-            Que nunca te falten motivos
-            para sonreír.
-
-        </p>
-
-        <div class="firma">
-            Con mucho cariño 🌻
-        </div>
-
-    </section>
-
-
-    <div class="desliza">
-        ↓ desliza para continuar ↓
-    </div>
-
-</main>
-
-
-<script>
-
-/* ======================================
-   CHISPAS AL TOCAR
-====================================== */
-
-function crearChispas(x, y) {
-
-    const cantidad = 9;
-
-    for (
-        let i = 0;
-        i < cantidad;
-        i++
-    ) {
-
-        const chispa =
-            document.createElement("div");
-
-        chispa.className = "chispa";
-
-        chispa.textContent =
-            Math.random() > .5
-            ? "✦"
-            : "✧";
-
-        chispa.style.left =
-            x + "px";
-
-        chispa.style.top =
-            y + "px";
-
-
-        const angulo =
-            Math.random()
-            * Math.PI * 2;
-
-        const distancia =
-            20 +
-            Math.random() * 55;
-
-
-        const movimientoX =
-            Math.cos(angulo)
-            * distancia;
-
-        const movimientoY =
-            Math.sin(angulo)
-            * distancia;
-
-
-        chispa.style.setProperty(
-            "--x",
-            movimientoX + "px"
-        );
-
-        chispa.style.setProperty(
-            "--y",
-            movimientoY + "px"
-        );
-
-
-        document.body.appendChild(chispa);
-
-
-        setTimeout(
-            () => chispa.remove(),
-            800
-        );
-
-    }
-
-}
-
-
-/* ======================================
-   TOQUE
-====================================== */
-
-document.addEventListener(
-    "click",
-    event => {
-
-        crearChispas(
-            event.clientX,
-            event.clientY
-        );
-
-    }
-);
-
-
-/* ======================================
-   TOQUE EN CELULAR
-====================================== */
-
-document.addEventListener(
-    "touchstart",
-    event => {
-
-        const touch =
-            event.touches[0];
-
-        crearChispas(
-            touch.clientX,
-            touch.clientY
-        );
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* ======================================
-   CHISPAS DURANTE EL DESLIZAMIENTO
-====================================== */
-
-let ultimoX = 0;
-let ultimoY = 0;
-let ultimoTiempo = 0;
-
-document.addEventListener(
-    "touchmove",
-    event => {
-
-        const touch =
-            event.touches[0];
-
-        const ahora =
-            Date.now();
-
-        /*
-         * Evita crear demasiadas
-         * partículas.
-         */
-
-        if (
-            ahora - ultimoTiempo > 90
-        ) {
-
-            crearChispas(
-                touch.clientX,
-                touch.clientY
-            );
-
-            ultimoTiempo = ahora;
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* ======================================
-   TAMBIÉN AL DESLIZAR CON EL RATÓN
-====================================== */
-
-let mouseActivo = false;
-
-document.addEventListener(
-    "mousedown",
-    () => {
-        mouseActivo = true;
-    }
-);
-
-document.addEventListener(
-    "mouseup",
-    () => {
-        mouseActivo = false;
-    }
-);
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        if (!mouseActivo)
-            return;
-
-        crearChispas(
-            event.clientX,
-            event.clientY
-        );
-
-    }
-);
-
-</script>
-
-</body>
-</html>
 ```
