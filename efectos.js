@@ -1,6 +1,6 @@
-/* =====================================================
+/* =========================================================
    LLUVIA DE PÉTALOS
-===================================================== */
+========================================================= */
 
 const contenedorPetalos =
     document.getElementById("lluvia-petalos");
@@ -23,11 +23,15 @@ function crearPetalo() {
 
     /* Posición horizontal */
 
+    const posicion =
+        Math.random() * 100;
+
+
     petalo.style.left =
-        Math.random() * 100 + "vw";
+        posicion + "vw";
 
 
-    /* Duración */
+    /* Duración aleatoria */
 
     const duracion =
         5 + Math.random() * 5;
@@ -39,24 +43,32 @@ function crearPetalo() {
     );
 
 
-    /* Movimiento lateral */
+    /* Movimiento */
+
+    const movimiento =
+        Math.random() * 180 - 90;
+
+
+    const movimientoFinal =
+        Math.random() * 260 - 130;
+
 
     petalo.style.setProperty(
         "--movimiento",
-        (Math.random() * 160 - 80) + "px"
+        movimiento + "px"
     );
 
 
     petalo.style.setProperty(
         "--movimiento-final",
-        (Math.random() * 240 - 120) + "px"
+        movimientoFinal + "px"
     );
 
 
-    /* Tamaño aleatorio */
+    /* Tamaño */
 
     const escala =
-        0.6 + Math.random() * 0.8;
+        0.6 + Math.random() * 0.9;
 
 
     petalo.style.transform =
@@ -69,50 +81,55 @@ function crearPetalo() {
         0.55 + Math.random() * 0.4;
 
 
-    /* Agregar */
+    /* Agregar a la pantalla */
 
     contenedorPetalos.appendChild(
         petalo
     );
 
 
-    /* Eliminar cuando termina */
+    /* Eliminar */
 
-    setTimeout(() => {
+    setTimeout(
+        function() {
 
-        petalo.remove();
+            petalo.remove();
 
-    }, (duracion + 0.5) * 1000);
+        },
+        (duracion + 1) * 1000
+    );
 }
+
 
 
 /* Crear pétalos continuamente */
 
 setInterval(
     crearPetalo,
-    550
+    450
 );
 
 
-/* Pétalos iniciales */
+
+/* Crear varios al iniciar */
 
 for (
     let i = 0;
-    i < 8;
+    i < 12;
     i++
 ) {
 
     setTimeout(
         crearPetalo,
-        i * 250
+        i * 180
     );
 }
 
 
 
-/* =====================================================
-   ESTRELLAS
-===================================================== */
+/* =========================================================
+   CREAR ESTRELLA
+========================================================= */
 
 function crearEstrella(x, y) {
 
@@ -133,13 +150,15 @@ function crearEstrella(x, y) {
     ];
 
 
+    const numero =
+        Math.floor(
+            Math.random() *
+            simbolos.length
+        );
+
+
     estrella.textContent =
-        simbolos[
-            Math.floor(
-                Math.random() *
-                simbolos.length
-            )
-        ];
+        simbolos[numero];
 
 
     /* Posición */
@@ -151,17 +170,25 @@ function crearEstrella(x, y) {
         y + "px";
 
 
-    /* Movimiento */
+    /* Dirección */
+
+    const dx =
+        Math.random() * 140 - 70;
+
+
+    const dy =
+        Math.random() * -160 - 40;
+
 
     estrella.style.setProperty(
         "--dx",
-        (Math.random() * 140 - 70) + "px"
+        dx + "px"
     );
 
 
     estrella.style.setProperty(
         "--dy",
-        (Math.random() * -160 - 40) + "px"
+        dy + "px"
     );
 
 
@@ -170,18 +197,21 @@ function crearEstrella(x, y) {
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+        function() {
 
-        estrella.remove();
+            estrella.remove();
 
-    }, 1100);
+        },
+        1100
+    );
 }
 
 
 
-/* =====================================================
-   CORAZONES
-===================================================== */
+/* =========================================================
+   CREAR CORAZÓN
+========================================================= */
 
 function crearCorazon(x, y) {
 
@@ -202,13 +232,15 @@ function crearCorazon(x, y) {
     ];
 
 
+    const numero =
+        Math.floor(
+            Math.random() *
+            corazones.length
+        );
+
+
     corazon.textContent =
-        corazones[
-            Math.floor(
-                Math.random() *
-                corazones.length
-            )
-        ];
+        corazones[numero];
 
 
     /* Posición */
@@ -222,21 +254,33 @@ function crearCorazon(x, y) {
 
     /* Movimiento */
 
+    const dx =
+        Math.random() * 160 - 80;
+
+
+    const dy =
+        Math.random() * -180 - 50;
+
+
+    const rotacion =
+        Math.random() * 80 - 40;
+
+
     corazon.style.setProperty(
         "--dx",
-        (Math.random() * 160 - 80) + "px"
+        dx + "px"
     );
 
 
     corazon.style.setProperty(
         "--dy",
-        (Math.random() * -180 - 50) + "px"
+        dy + "px"
     );
 
 
     corazon.style.setProperty(
         "--rotacion",
-        (Math.random() * 80 - 40) + "deg"
+        rotacion + "deg"
     );
 
 
@@ -245,35 +289,67 @@ function crearCorazon(x, y) {
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+        function() {
 
-        corazon.remove();
+            corazon.remove();
 
-    }, 1300);
+        },
+        1300
+    );
 }
 
 
 
-/* =====================================================
-   EFECTO AL TOCAR LA PANTALLA
-===================================================== */
+/* =========================================================
+   TOCAR PANTALLA
+========================================================= */
 
 document.addEventListener(
     "touchstart",
     function(evento) {
 
-        const touch =
+        if (
+            !evento.touches ||
+            evento.touches.length === 0
+        ) {
+            return;
+        }
+
+
+        const toque =
             evento.touches[0];
 
 
         const x =
-            touch.clientX;
+            toque.clientX;
+
 
         const y =
-            touch.clientY;
+            toque.clientY;
 
 
-        /* Estrellas */
+        /* Crear estrellas */
+
+        for (
+            let i = 0;
+            i < 4;
+            i++
+        ) {
+
+            crearEstrella(
+
+                x +
+                (Math.random() * 70 - 35),
+
+                y +
+                (Math.random() * 70 - 35)
+
+            );
+        }
+
+
+        /* Crear corazones */
 
         for (
             let i = 0;
@@ -281,33 +357,13 @@ document.addEventListener(
             i++
         ) {
 
-            crearEstrella(
-
-                x +
-                (Math.random() * 50 - 25),
-
-                y +
-                (Math.random() * 50 - 25)
-
-            );
-        }
-
-
-        /* Corazones */
-
-        for (
-            let i = 0;
-            i < 2;
-            i++
-        ) {
-
             crearCorazon(
 
                 x +
-                (Math.random() * 60 - 30),
+                (Math.random() * 80 - 40),
 
                 y +
-                (Math.random() * 40 - 20)
+                (Math.random() * 60 - 30)
 
             );
         }
@@ -320,9 +376,9 @@ document.addEventListener(
 
 
 
-/* =====================================================
-   EFECTO AL HACER CLICK
-===================================================== */
+/* =========================================================
+   CLICK EN PC
+========================================================= */
 
 document.addEventListener(
     "click",
@@ -330,6 +386,7 @@ document.addEventListener(
 
         const x =
             evento.clientX;
+
 
         const y =
             evento.clientY;
@@ -346,10 +403,10 @@ document.addEventListener(
             crearEstrella(
 
                 x +
-                (Math.random() * 60 - 30),
+                (Math.random() * 70 - 35),
 
                 y +
-                (Math.random() * 60 - 30)
+                (Math.random() * 70 - 35)
 
             );
         }
@@ -359,17 +416,17 @@ document.addEventListener(
 
         for (
             let i = 0;
-            i < 2;
+            i < 3;
             i++
         ) {
 
             crearCorazon(
 
                 x +
-                (Math.random() * 70 - 35),
+                (Math.random() * 80 - 40),
 
                 y +
-                (Math.random() * 50 - 25)
+                (Math.random() * 60 - 30)
 
             );
         }
